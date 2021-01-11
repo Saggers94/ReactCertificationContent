@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // This will simply fulfill the requirements of having the adjecent component
-import Aux from "../../hoc/Auxiliary";
+import Aux from "../../hoc/Auxilliary/Auxiliary";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";
@@ -29,7 +29,7 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 4,
     purchasable: false,
-    purcahsing: false,
+    purchasing: false,
   };
 
   updatePurchaseState(ingredients) {
@@ -72,7 +72,9 @@ class BurgerBuilder extends Component {
     };
     updatedIngredients[type] = updatedCount;
     const priceDeduction = INGREDIENT_PRICES[type];
-    const oldPrice = this.state.oldPrice;
+    console.log(priceDeduction);
+    const oldPrice = this.state.totalPrice;
+    console.log(oldPrice);
     const newPrice = oldPrice - priceDeduction;
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
     this.updatePurchaseState(updatedIngredients);
@@ -91,6 +93,7 @@ class BurgerBuilder extends Component {
   };
 
   render() {
+    console.log(this.state.purchasing);
     //Structure of disabledInfo is {salad: true, meat: false, bacon: false, cheese: false}
     const disabledInfo = { ...this.state.ingredients };
     for (let key in disabledInfo) {
