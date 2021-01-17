@@ -6,7 +6,7 @@ const NavigationItems = (props) => (
   <ul className={Classes.NavigationItems}>
     {/* For boolean props we can just pass it like this */}
     <NavigationItem link="/" active>
-      Burger Builder
+      Burger
     </NavigationItem>
     <NavigationItem link="/">Checkout</NavigationItem>
   </ul>

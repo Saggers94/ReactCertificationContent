@@ -4,7 +4,15 @@ import Aux from "../../../hoc/Auxilliary/Auxiliary";
 import Backdrop from "../Backdrop/Backdrop";
 class Modal extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.show !== this.props.show;
+    return (
+      nextProps.show !== this.props.show ||
+      // This children checking for the updating is important as
+      // the spinner is children of the modal file and also the order
+      // summary. so whenever we change children it is important
+      // to change the trigger in the modal to see the effect of
+      // the spinner
+      nextProps.children !== this.props.children
+    );
   }
 
   componentDidUpdate() {

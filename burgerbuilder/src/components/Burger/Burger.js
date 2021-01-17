@@ -2,7 +2,12 @@ import React from "react";
 import Classes from "./Burger.module.css";
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
+// Injecting router props into this component with "withRouter" Component
+import { withRouter } from "react-router-dom";
+
 const Burger = (props) => {
+  console.log(props);
+
   // This would give an aray of object keys but values are not part of the array
   let transformedIngredients = Object.keys(props.ingredients)
     .map((igKey) => {
@@ -32,4 +37,6 @@ const Burger = (props) => {
   );
 };
 
-export default Burger;
+// After wrapping this component with "withRouter" now you would be
+// able to see all of the router props like (history, match, location)
+export default withRouter(Burger);
